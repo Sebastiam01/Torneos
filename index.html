@@ -7,13 +7,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap');
+        
         body { background-color: #020617; color: #e2e8f0; font-family: 'Rajdhani', sans-serif; }
         .font-title { font-family: 'Orbitron', sans-serif; }
         .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* Estilos del Torneo */
         .bracket-node { min-width: 150px; border-left: 4px solid #3b82f6; transition: 0.3s; }
         .eliminated { opacity: 0.4; text-decoration: line-through; border-left-color: #ef4444; }
         .winner { border-left-color: #22c55e; color: #4ade80; box-shadow: 0 0 15px rgba(34, 197, 94, 0.2); }
         .hidden { display: none; }
+
+        /* Estilos del Formulario Pro */
+        .form-card { background: #0a0a0c; border: 1px solid #2d1b4d; border-radius: 12px; padding: 2rem; }
+        .input-field { background: #121214; border: 1px solid #2d2d30; color: white; padding: 0.75rem 1rem; border-radius: 6px; width: 100%; outline: none; transition: border-color 0.2s; }
+        .input-field:focus { border-color: #a855f7; }
+        .section-title { color: #a855f7; font-weight: bold; text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
     </style>
 </head>
 <body>
@@ -29,101 +38,93 @@
     </nav>
 
     <div id="page-home" class="page min-h-screen flex flex-col items-center justify-center text-center p-4">
-        <h1 class="text-7xl font-black font-title mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">TORNEO LK LEAGUE</h1>
+        <h1 class="text-7xl font-black font-title mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 uppercase">Torneo LK League</h1>
         <div class="flex flex-wrap justify-center gap-4 mt-8">
             <button onclick="showPage('inscripcion')" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-bold uppercase transition">Inscribir</button>
-            <button onclick="showPage('bracket')" class="px-8 py-4 glass hover:bg-white/10 rounded-lg font-bold uppercase transition">Ver Equipos</button>
-            <button onclick="showPage('bracket')" class="px-8 py-4 glass hover:bg-white/10 rounded-lg font-bold uppercase transition">Ver Ganadores</button>
+            <button onclick="showPage('bracket')" class="px-8 py-4 glass hover:bg-white/10 rounded-lg font-bold uppercase transition text-sm">Ver Equipos</button>
+            <button onclick="showPage('bracket')" class="px-8 py-4 glass hover:bg-white/10 rounded-lg font-bold uppercase transition text-sm">Ver Ganadores</button>
         </div>
-        <footer class="mt-20 border-t border-purple-500/30 bg-[#020617] px-10 py-12">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-            
-            <div class="space-y-4">
-                <div class="flex items-center gap-2">
-                    <span class="text-purple-500 text-2xl">🎮</span>
-                    <h2 class="text-xl font-bold font-title tracking-tighter">
-                        COPA LEAGUE <span class="text-purple-500">LK</span>
-                    </h2>
+        
+        <footer class="mt-20 border-t border-purple-500/30 bg-[#020617] px-10 py-12 w-full">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <span class="text-purple-500 text-2xl">🎮</span>
+                        <h2 class="text-xl font-bold font-title tracking-tighter uppercase">Copa League <span class="text-purple-500">LK</span></h2>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">El torneo definitivo de Mobile Legends. Demuestra tu habilidad y alcanza la gloria.</p>
                 </div>
-                <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
-                    El torneo definitivo de Mobile Legends. Demuestra tu habilidad, compite con los mejores y alcanza la gloria en la arena.
-                </p>
-            </div>
-
-            <div class="space-y-4">
-                <h3 class="text-lg font-bold font-title uppercase tracking-widest text-white">Enlaces Rápidos</h3>
-                <ul class="space-y-2 text-gray-400 text-sm">
-                    <li><a href="#" onclick="showPage('home')" class="hover:text-purple-500 transition">Home</a></li>
-                    <li><a href="#" onclick="showPage('inscripcion')" class="hover:text-purple-500 transition">Inscripción</a></li>
-                    <li><a href="#" onclick="showPage('bracket')" class="hover:text-purple-500 transition">Resultados</a></li>
-                </ul>
-            </div>
-
-            <div class="space-y-4">
-                <h3 class="text-lg font-bold font-title uppercase tracking-widest text-white">Síguenos</h3>
-                <div class="flex gap-3">
-                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"/></svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    </a>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold font-title uppercase tracking-widest text-white">Enlaces Rápidos</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" onclick="showPage('home')" class="hover:text-purple-500 transition">Home</a></li>
+                        <li><a href="#" onclick="showPage('inscripcion')" class="hover:text-purple-500 transition">Inscripción</a></li>
+                        <li><a href="#" onclick="showPage('bracket')" class="hover:text-purple-500 transition">Resultados</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold font-title uppercase tracking-widest text-white">Síguenos</h3>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">TW</a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">IG</a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">FB</a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-widest">
-            <p>© 2026 Copa League LK. Todos los derechos reservados.</p>
-            <div class="space-x-6">
-                <a href="#" class="hover:text-white transition">Términos de Servicio</a>
-                <a href="#" class="hover:text-white transition">Política de Privacidad</a>
-            </div>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <div id="page-inscripcion" class="page hidden min-h-screen p-8 max-w-4xl mx-auto">
-        <div class="glass p-8 rounded-2xl">
-            <h2 class="text-4xl font-title font-bold mb-2 text-center">ALISTA TU ESCUADRA</h2>
-            <div class="text-sm text-gray-400 mb-8 space-y-1 text-center italic">
-                <p>* Registra a tu equipo para la copa LK League</p>
-                <p>* Mínimo 5 integrantes, máximo 6 (incluyendo capitán)</p>
-                <p>* Los IDs de juego deben ser únicos</p>
-            </div>
+        <div class="form-card">
+            <h2 class="text-3xl font-bold mb-2 uppercase font-title">Formulario de Inscripción</h2>
+            <p class="text-gray-400 mb-8 italic text-sm">Completa los datos de todos los integrantes (Mín. 5 - Máx. 6).</p>
 
-            <form id="formRegistro" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-4">
-                    <h3 class="text-blue-400 font-bold border-b border-blue-500/30">DATOS DEL EQUIPO</h3>
-                    <input type="text" id="teamName" placeholder="Nombre del Equipo" class="w-full bg-slate-900/50 p-3 rounded border border-slate-700 outline-none focus:border-blue-500" required>
-                    <input type="text" id="capName" placeholder="Nombre del Capitán" class="w-full bg-slate-900/50 p-3 rounded border border-slate-700 outline-none" required>
-                    <input type="text" id="capTel" placeholder="Teléfono del Capitán" class="w-full bg-slate-900/50 p-3 rounded border border-slate-700 outline-none" required>
-                    <input type="text" id="capID" placeholder="ID del Juego (Capitán)" class="w-full bg-slate-900/50 p-3 rounded border border-slate-700 outline-none" required>
-                </div>
-                <div class="space-y-4">
-                    <h3 class="text-purple-400 font-bold border-b border-purple-500/30">JUGADORES ADICIONALES (ID UNICOS)</h3>
-                    <input type="text" class="player-id w-full bg-slate-900/50 p-3 rounded border border-slate-700 outline-none" placeholder="ID Jugador 2" required>
-                    <input type="text" class="player-id w-full bg-slate-900/50 p-3 rounded border border-slate-700 outline-none" placeholder="ID Jugador 3" required>
-                    <input type="text" class="player-id w-full bg-slate-900/50 p-3 rounded border border-slate-700 outline-none" placeholder="ID Jugador 4" required>
-                    <input type="text" class="player-id w-full bg-slate-900/50 p-3 rounded border border-slate-700 outline-none" placeholder="ID Jugador 5 (Opcional)">
-                    <input type="text" class="player-id w-full bg-slate-900/50 p-3 rounded border border-slate-700 outline-none" placeholder="ID Jugador 6 (Opcional)">
-                </div>
-                <button type="submit" class="md:col-span-2 bg-gradient-to-r from-blue-600 to-purple-600 py-4 rounded-xl font-black text-xl hover:scale-105 transition">CONFIRMAR EQUIPO</button>
+            <form id="formRegistro" class="space-y-10">
+                <section>
+                    <div class="section-title"><span>🛡️</span> Datos Principales</div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label class="text-xs font-bold mb-2 block uppercase text-gray-500">Nombre del Equipo *</label>
+                            <input type="text" id="teamName" placeholder="Ej. Los Invencibles" class="input-field" required>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold mb-2 block uppercase text-gray-500">Nombre del Capitán *</label>
+                            <input type="text" id="capName" placeholder="Nickname del Capitán" class="input-field" required>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold mb-2 block uppercase text-gray-500">Teléfono del Capitán *</label>
+                            <input type="text" id="capTel" placeholder="Número de contacto" class="input-field" required>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="text-xs font-bold mb-2 block uppercase text-gray-500">Game ID del Capitán *</label>
+                            <input type="text" id="capID" placeholder="ID del juego" class="input-field" required>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="flex justify-between items-center mb-6 text-sm">
+                        <div class="section-title mb-0"><span>👤</span> Jugadores Adicionales</div>
+                        <span id="playerCounter" class="bg-gray-800 px-3 py-1 rounded-full text-purple-400 font-bold tracking-tighter">1 / 6 Jugadores</span>
+                    </div>
+                    <div id="additionalPlayers" class="space-y-4"></div>
+                    <button type="button" onclick="addPlayerField()" id="btnAddPlayer" class="mt-4 w-full border-2 border-dashed border-purple-500/30 py-4 rounded-xl text-purple-400 hover:bg-purple-500/10 transition font-bold uppercase text-xs">
+                        + Agregar Jugador
+                    </button>
+                </section>
+
+                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-4 rounded-xl font-bold text-lg uppercase shadow-lg shadow-purple-500/20 transition">
+                    Confirmar Inscripción
+                </button>
             </form>
         </div>
     </div>
 
     <div id="page-bracket" class="page hidden min-h-screen p-8">
-        <h2 class="text-center text-4xl font-title font-bold mb-10">BRACKET OFICIAL</h2>
-        
-        <div id="adminControls" class="hidden mb-6 bg-yellow-600/20 p-4 rounded-lg border border-yellow-600 text-center">
-            <span class="font-bold text-yellow-500 uppercase">Panel de Control Activo: Haz clic en los equipos para avanzar</span>
-            <button onclick="logout()" class="ml-4 underline text-xs">Cerrar Sesión</button>
+        <h2 class="text-center text-4xl font-title font-bold mb-10 uppercase">Bracket Oficial</h2>
+        <div id="adminControls" class="hidden mb-6 bg-yellow-600/20 p-4 rounded-lg border border-yellow-600 text-center text-sm">
+            <span class="font-bold text-yellow-500 uppercase tracking-tighter">Modo Admin Activo</span>
+            <button onclick="logout()" class="ml-4 underline">Cerrar Sesión</button>
         </div>
 
         <div class="flex flex-row justify-center items-center gap-8 overflow-x-auto pb-20">
@@ -137,37 +138,36 @@
                     <div id="m2-2" onclick="handleWin('m2-2', 'm2-1', 'f-2')" class="bracket-node glass p-3 rounded cursor-pointer">Equipo 4</div>
                 </div>
             </div>
-
             <div class="flex flex-col justify-center">
                 <div class="space-y-2">
-                    <div id="f-1" onclick="handleWin('f-1', 'f-2', 'champ')" class="bracket-node glass p-3 rounded border-blue-500 cursor-pointer">?</div>
-                    <div id="f-2" onclick="handleWin('f-2', 'f-1', 'champ')" class="bracket-node glass p-3 rounded border-blue-500 cursor-pointer">?</div>
+                    <div id="f-1" onclick="handleWin('f-1', 'f-2', 'champ')" class="bracket-node glass p-3 rounded border-blue-500 cursor-pointer italic text-gray-500 text-xs">Ganador Semis 1</div>
+                    <div id="f-2" onclick="handleWin('f-2', 'f-1', 'champ')" class="bracket-node glass p-3 rounded border-blue-500 cursor-pointer italic text-gray-500 text-xs">Ganador Semis 2</div>
                 </div>
             </div>
-
             <div class="text-center ml-8">
                 <div class="text-6xl mb-2">🏆</div>
-                <div id="champ" class="text-2xl font-black text-yellow-500 uppercase">Copa League</div>
+                <div id="champ" class="text-2xl font-black text-yellow-500 uppercase tracking-tighter">Campeón</div>
             </div>
         </div>
 
         <div id="teamAdminList" class="hidden mt-10 max-w-2xl mx-auto">
-            <h3 class="text-xl font-bold mb-4 border-b border-white/20 pb-2">GESTIONAR EQUIPOS</h3>
+            <h3 class="text-xl font-bold mb-4 border-b border-white/20 pb-2 uppercase text-xs text-gray-400">Equipos Registrados</h3>
             <div id="listContent" class="space-y-2"></div>
         </div>
     </div>
 
     <div id="page-login" class="page hidden min-h-screen flex items-center justify-center">
         <div class="glass p-8 rounded-xl w-80 text-center">
-            <h2 class="text-2xl font-bold mb-6">ADMIN LOGIN</h2>
-            <input type="text" id="userAdmin" placeholder="Correo" class="w-full bg-slate-900 p-2 rounded mb-4 outline-none border border-slate-700">
-            <input type="password" id="passAdmin" placeholder="Clave" class="w-full bg-slate-900 p-2 rounded mb-6 outline-none border border-slate-700">
-            <button onclick="login()" class="w-full bg-blue-600 py-2 rounded font-bold">Entrar</button>
+            <h2 class="text-2xl font-bold mb-6 uppercase font-title">Admin Login</h2>
+            <input type="text" id="userAdmin" placeholder="sebastian2026" class="w-full bg-slate-900 p-2 rounded mb-4 outline-none border border-slate-700 text-sm">
+            <input type="password" id="passAdmin" placeholder="admin123" class="w-full bg-slate-900 p-2 rounded mb-6 outline-none border border-slate-700 text-sm">
+            <button onclick="login()" class="w-full bg-blue-600 py-2 rounded font-bold uppercase text-sm">Entrar</button>
         </div>
     </div>
 
     <script>
         let isAdmin = false;
+        let playerCount = 1; 
         let inscritos = JSON.parse(localStorage.getItem('torneoLK_data')) || [];
 
         function showPage(id) {
@@ -176,88 +176,98 @@
             if(id === 'bracket') renderAdminList();
         }
 
-        // --- LÓGICA DE REGISTRO ---
+        // LÓGICA DE AGREGAR JUGADORES (Mín 5, Máx 6 total)
+        function addPlayerField() {
+            if (playerCount >= 6) return;
+            playerCount++;
+            const container = document.getElementById('additionalPlayers');
+            const isRequired = playerCount <= 5 ? 'required' : '';
+            const statusLabel = playerCount <= 5 ? '(Obligatorio)' : '(Opcional)';
+
+            const div = document.createElement('div');
+            div.className = "grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/5 p-4 rounded-lg border border-white/10";
+            div.innerHTML = `
+                <div>
+                    <label class="text-[10px] uppercase text-gray-500 block mb-1">Nickname ${statusLabel}</label>
+                    <input type="text" class="input-field p_nick" placeholder="Nombre del jugador" ${isRequired}>
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase text-gray-500 block mb-1">Game ID ${statusLabel}</label>
+                    <input type="text" class="input-field p_id" placeholder="ID del juego" ${isRequired}>
+                </div>
+            `;
+            container.appendChild(div);
+            updateCounter();
+            if (playerCount === 6) document.getElementById('btnAddPlayer').classList.add('hidden');
+        }
+
+        function updateCounter() {
+            document.getElementById('playerCounter').innerText = `${playerCount} / 6 Jugadores`;
+        }
+
+        // Inicializar con los 4 campos obligatorios adicionales para llegar a 5
+        for(let i=0; i<4; i++) { addPlayerField(); }
+
+        // LÓGICA DE REGISTRO
         document.getElementById('formRegistro').onsubmit = (e) => {
             e.preventDefault();
-            
-            const idsInput = Array.from(document.querySelectorAll('.player-id')).map(i => i.value).filter(v => v !== "");
-            const capID = document.getElementById('capID').value;
-            const todosLosIDs = [capID, ...idsInput];
+            const capID = document.getElementById('capID').value.trim();
+            const otherIDs = Array.from(document.querySelectorAll('.p_id')).map(i => i.value.trim()).filter(v => v !== "");
+            const todosLosIDs = [capID, ...otherIDs];
 
-            // 1. Validar duplicados en la base de datos actual
-            const idsExistentes = inscritos.flatMap(e => e.ids);
-            const duplicado = todosLosIDs.find(id => idsExistentes.includes(id));
-
-            if (duplicado) {
-                alert(`❌ ERROR: El ID "${duplicado}" ya está registrado en otro equipo.`);
-                return;
+            // Validar IDs únicos dentro del equipo
+            if (new Set(todosLosIDs).size !== todosLosIDs.length) {
+                alert("❌ No puedes repetir el mismo ID en el equipo."); return;
             }
 
-            // 2. Guardar equipo
-            const nuevoEquipo = {
+            // Validar contra otros equipos
+            const idsGlobales = inscritos.flatMap(e => e.ids);
+            const duplicado = todosLosIDs.find(id => idsGlobales.includes(id));
+            if (duplicado) {
+                alert(`❌ El ID "${duplicado}" ya está registrado en otro equipo.`); return;
+            }
+
+            inscritos.push({
                 id: Date.now(),
                 nombre: document.getElementById('teamName').value,
                 cap: document.getElementById('capName').value,
-                tel: document.getElementById('capTel').value,
                 ids: todosLosIDs
-            };
-
-            inscritos.push(nuevoEquipo);
+            });
             localStorage.setItem('torneoLK_data', JSON.stringify(inscritos));
-            alert("✅ ¡EQUIPO INSCRITO EXITOSAMENTE!");
-            e.target.reset();
-            showPage('home');
+            alert("✅ REGISTRO EXITOSO");
+            location.reload();
         };
 
-        // --- LÓGICA ADMIN ---
+        // ADMIN FUNCTIONS
         function login() {
-            const u = document.getElementById('userAdmin').value;
-            const p = document.getElementById('passAdmin').value;
-            if(u === 'sebastian2026' && p === 'admin123') {
+            if(document.getElementById('userAdmin').value === 'sebastian2026' && document.getElementById('passAdmin').value === 'admin123') {
                 isAdmin = true;
                 document.getElementById('adminControls').classList.remove('hidden');
                 document.getElementById('teamAdminList').classList.remove('hidden');
                 document.getElementById('adminStatusBtn').innerText = "ADMIN ONLINE";
                 showPage('bracket');
-            } else {
-                alert("Credenciales incorrectas");
-            }
+            } else { alert("Credenciales incorrectas"); }
         }
 
-        function logout() {
-            isAdmin = false;
-            location.reload();
-        }
+        function logout() { isAdmin = false; location.reload(); }
 
         function handleWin(wId, lId, nId) {
             if(!isAdmin) return;
             const winner = document.getElementById(wId);
             const loser = document.getElementById(lId);
             const next = document.getElementById(nId);
-
-            winner.classList.add('winner');
-            winner.classList.remove('eliminated');
-            loser.classList.add('eliminated');
-            loser.classList.remove('winner');
-
-            if(nId === 'champ') {
-                next.innerText = winner.innerText;
-            } else {
-                next.innerText = winner.innerText;
-            }
+            winner.classList.add('winner'); winner.classList.remove('eliminated');
+            loser.classList.add('eliminated'); loser.classList.remove('winner');
+            next.innerText = winner.innerText;
+            next.classList.remove('italic', 'text-gray-500', 'text-xs');
         }
 
         function renderAdminList() {
             const cont = document.getElementById('listContent');
             cont.innerHTML = inscritos.map(eq => `
-                <div class="flex justify-between items-center bg-slate-800 p-3 rounded border border-slate-700">
-                    <div>
-                        <span class="font-bold text-blue-400">${eq.nombre}</span>
-                        <span class="text-xs text-gray-500 ml-2">(Cap: ${eq.cap})</span>
-                    </div>
-                    <div class="space-x-2">
-                        <button onclick="eliminarEquipo(${eq.id})" class="text-[10px] bg-red-600/20 text-red-500 px-2 py-1 rounded">Eliminar</button>
-                    </div>
+                <div class="flex justify-between items-center bg-slate-800 p-3 rounded border border-slate-700 text-sm">
+                    <div><span class="font-bold text-blue-400">${eq.nombre}</span> <span class="text-[10px] text-gray-500">(IDs: ${eq.ids.length})</span></div>
+                    <button onclick="eliminarEquipo(${eq.id})" class="text-[10px] bg-red-600/20 text-red-500 px-2 py-1 rounded">X</button>
                 </div>
             `).join('');
         }
