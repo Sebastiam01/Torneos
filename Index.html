@@ -3,130 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copa League LK | Mobile Legends</title>
+    <title>Copa League LK | MLBB</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0f172a; color: white; font-family: 'Inter', sans-serif; }
-        .bracket-card { background: #1e293b; border-left: 4px solid #3b82f6; }
-        .eliminated { text-decoration: line-through; opacity: 0.5; border-left-color: #ef4444 !important; }
-        .winner { border-left-color: #22c55e !important; box-shadow: 0 0 15px rgba(34, 197, 94, 0.2); }
+        body { background: #020617; color: white; font-family: sans-serif; }
+        .match-card { background: #1e293b; border: 1px solid #334155; padding: 10px; border-radius: 8px; width: 180px; transition: 0.3s; }
+        .eliminated { text-decoration: line-through; opacity: 0.4; filter: grayscale(1); border-color: #ef4444; }
+        .winner { border-color: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.3); color: #4ade80; }
+        .bracket-line { height: 2px; background: #334155; flex-grow: 1; }
     </style>
 </head>
-<body class="p-4 md:p-10">
+<body class="p-5">
 
-    <header class="text-center mb-12">
-        <h1 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-            COPA LEAGUE LK
-        </h1>
-        <p class="text-gray-400 mt-2">Torneo Relámpago de Mobile Legends</p>
+    <header class="text-center py-10">
+        <h1 class="text-4xl font-black tracking-tighter text-blue-500 italic">COPA LEAGUE LK</h1>
+        <p class="text-gray-500 uppercase text-xs tracking-widest">Torneo de Mobile Legends</p>
+        <div class="mt-4">
+            <button onclick="toggleAdmin()" id="btnAdmin" class="bg-slate-800 text-[10px] px-4 py-2 rounded-full border border-slate-700">MODO ADMIN: OFF</button>
+        </div>
     </header>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <main class="flex flex-row justify-center items-center gap-4 overflow-x-auto pb-20">
         
-        <section class="lg:col-span-1 bg-slate-800 p-6 rounded-2xl h-fit shadow-xl">
-            <h2 class="text-2xl font-bold mb-4 flex items-center">📝 Inscripción</h2>
-            <form id="regForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm text-gray-400">Nombre del Equipo</label>
-                    <input type="text" id="teamName" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" required>
-                </div>
-                <div>
-                    <label class="block text-sm text-gray-400">ID del Capitán (WhatsApp/Discord)</label>
-                    <input type="text" id="captain" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none" required>
-                </div>
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-bold transition">Inscribir Equipo</button>
-            </form>
-
-            <div class="mt-8">
-                <h3 class="font-bold mb-2 text-gray-300">Equipos Registrados:</h3>
-                <ul id="teamList" class="text-sm space-y-2 text-gray-400">
-                    </ul>
+        <div class="flex flex-col gap-10">
+            <h2 class="text-center text-[10px] text-gray-600 font-bold">CUARTOS</h2>
+            <div class="space-y-1">
+                <div id="c1-1" onclick="win('c1-1', 'c1-2', 's1-1')" class="match-card cursor-pointer">Equipo 1</div>
+                <div id="c1-2" onclick="win('c1-2', 'c1-1', 's1-1')" class="match-card cursor-pointer">Equipo 2</div>
             </div>
-        </section>
-
-        <section class="lg:col-span-2">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold italic">⚔️ Brackets de Combate</h2>
-                <button onclick="toggleAdmin()" id="adminBtn" class="text-xs bg-slate-700 px-3 py-1 rounded hover:bg-slate-600 transition">Modo Admin: OFF</button>
+            <div class="space-y-1">
+                <div id="c2-1" onclick="win('c2-1', 'c2-2', 's1-2')" class="match-card cursor-pointer">Equipo 3</div>
+                <div id="c2-2" onclick="win('c2-2', 'c2-1', 's1-2')" class="match-card cursor-pointer">Equipo 4</div>
             </div>
+        </div>
 
-            <div class="grid grid-cols-2 gap-8">
-                <div class="space-y-8">
-                    <h3 class="text-center text-blue-400 font-bold uppercase tracking-widest text-xs">Semifinales</h3>
-                    
-                    <div class="space-y-2">
-                        <div id="m1-t1" onclick="manageMatch('m1-t1', 'm1-t2', 'fin-1')" class="bracket-card p-4 rounded-lg cursor-pointer transition">Equipo A</div>
-                        <div class="text-center text-xs text-gray-600 italic">VS</div>
-                        <div id="m1-t2" onclick="manageMatch('m1-t2', 'm1-t1', 'fin-1')" class="bracket-card p-4 rounded-lg cursor-pointer transition">Equipo B</div>
-                    </div>
+        <div class="bracket-line w-10"></div>
 
-                    <div class="space-y-2">
-                        <div id="m2-t1" onclick="manageMatch('m2-t1', 'm2-t2', 'fin-2')" class="bracket-card p-4 rounded-lg cursor-pointer transition">Equipo C</div>
-                        <div class="text-center text-xs text-gray-600 italic">VS</div>
-                        <div id="m2-t2" onclick="manageMatch('m2-t2', 'm2-t1', 'fin-2')" class="bracket-card p-4 rounded-lg cursor-pointer transition">Equipo D</div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col justify-center space-y-8">
-                    <h3 class="text-center text-purple-400 font-bold uppercase tracking-widest text-xs">Gran Final</h3>
-                    <div class="space-y-2">
-                        <div id="fin-1" class="bracket-card p-4 rounded-lg border-purple-500">?</div>
-                        <div class="text-center text-xs text-gray-600 italic">VS</div>
-                        <div id="fin-2" class="bracket-card p-4 rounded-lg border-purple-500">?</div>
-                    </div>
-                </div>
+        <div class="flex flex-col gap-32">
+            <h2 class="text-center text-[10px] text-blue-900 font-bold">SEMIS</h2>
+            <div class="space-y-1">
+                <div id="s1-1" onclick="win('s1-1', 's1-2', 'f-1')" class="match-card cursor-pointer text-gray-500 text-sm italic font-light">Ganador P1</div>
+                <div id="s1-2" onclick="win('s1-2', 's1-1', 'f-1')" class="match-card cursor-pointer text-gray-500 text-sm italic font-light">Ganador P2</div>
             </div>
-        </section>
-    </div>
+        </div>
+
+        <div class="bracket-line w-10"></div>
+
+        <div class="flex flex-col">
+            <h2 class="text-center text-[10px] text-yellow-600 font-bold">FINAL</h2>
+            <div class="space-y-1">
+                <div id="f-1" onclick="win('f-1', 'f-2', 'campeon')" class="match-card cursor-pointer text-gray-500 text-sm h-12 flex items-center">?</div>
+                <div id="f-2" onclick="win('f-2', 'f-1', 'campeon')" class="match-card cursor-pointer text-gray-500 text-sm h-12 flex items-center">?</div>
+            </div>
+        </div>
+
+        <div class="ml-10 text-center">
+            <div class="text-5xl mb-2">🏆</div>
+            <div id="campeon" class="text-xl font-bold text-yellow-500 uppercase tracking-tighter">Esperando...</div>
+        </div>
+
+    </main>
 
     <script>
-        let adminMode = false;
-        let teams = JSON.parse(localStorage.getItem('copaLK_teams')) || [];
+        let admin = false;
 
         function toggleAdmin() {
-            adminMode = !adminMode;
-            document.getElementById('adminBtn').innerText = `Modo Admin: ${adminMode ? 'ON' : 'OFF'}`;
-            document.getElementById('adminBtn').classList.toggle('bg-green-600');
+            admin = !admin;
+            const btn = document.getElementById('btnAdmin');
+            btn.innerText = admin ? "MODO ADMIN: ON" : "MODO ADMIN: OFF";
+            btn.className = admin ? "bg-green-600 text-[10px] px-4 py-2 rounded-full border border-green-400" : "bg-slate-800 text-[10px] px-4 py-2 rounded-full border border-slate-700";
         }
 
-        // Registro de equipos
-        document.getElementById('regForm').onsubmit = (e) => {
-            e.preventDefault();
-            const name = document.getElementById('teamName').value;
-            teams.push(name);
-            localStorage.setItem('copaLK_teams', JSON.stringify(teams));
-            renderTeams();
-            e.target.reset();
-        };
+        function win(winnerId, loserId, nextId) {
+            if (!admin) return;
 
-        function renderTeams() {
-            const list = document.getElementById('teamList');
-            list.innerHTML = teams.map(t => `<li>• ${t}</li>`).join('');
-        }
+            const w = document.getElementById(winnerId);
+            const l = document.getElementById(loserId);
+            const next = document.getElementById(nextId);
 
-        // Lógica de avance de equipos
-        function manageMatch(winnerId, loserId, nextStepId) {
-            if (!adminMode) return;
+            // Efectos visuales
+            w.classList.add('winner');
+            w.classList.remove('eliminated');
+            l.classList.add('eliminated');
+            l.classList.remove('winner');
 
-            const winnerElem = document.getElementById(winnerId);
-            const loserElem = document.getElementById(loserId);
-            const nextElem = document.getElementById(nextStepId);
-
-            // Tachar al que perdió
-            loserElem.classList.add('eliminated');
-            loserElem.classList.remove('winner');
-            
-            // Resaltar al que ganó
-            winnerElem.classList.add('winner');
-            winnerElem.classList.remove('eliminated');
-
-            // Avanzar al equipo al siguiente cuadro
-            if (nextElem) {
-                nextElem.innerText = winnerElem.innerText;
+            // Pasar nombre
+            if (nextId === 'campeon') {
+                next.innerText = "¡" + w.innerText + "!";
+            } else {
+                next.innerText = w.innerText;
+                next.classList.remove('text-gray-500', 'italic', 'font-light');
+                next.classList.add('text-white', 'font-bold');
             }
         }
-
-        renderTeams();
     </script>
 </body>
 </html>
