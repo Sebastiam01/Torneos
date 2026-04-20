@@ -24,6 +24,7 @@
         .input-field:focus { border-color: #a855f7; }
         .section-title { color: #a855f7; font-weight: bold; text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -45,8 +46,8 @@
             <button onclick="showPage('bracket')" class="px-8 py-4 glass hover:bg-white/10 rounded-lg font-bold uppercase transition text-sm">Ver Ganadores</button>
         </div>
         
-        <footer class="mt-20 border-t border-purple-500/30 bg-[#020617] px-10 py-12 w-full">
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
+        <footer class="mt-20 border-t border-purple-500/30 bg-[#020617] px-10 py-12 w-full text-left">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="space-y-4">
                     <div class="flex items-center gap-2">
                         <span class="text-purple-500 text-2xl">🎮</span>
@@ -65,9 +66,9 @@
                 <div class="space-y-4">
                     <h3 class="text-lg font-bold font-title uppercase tracking-widest text-white">Síguenos</h3>
                     <div class="flex gap-3">
-                        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">TW</a>
-                        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">IG</a>
-                        <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">FB</a>
+                        <a href="#" class="w-10 h-10 border border-gray-700 flex items-center justify-center rounded">TW</a>
+                        <a href="#" class="w-10 h-10 border border-gray-700 flex items-center justify-center rounded">IG</a>
+                        <a href="#" class="w-10 h-10 border border-gray-700 flex items-center justify-center rounded">FB</a>
                     </div>
                 </div>
             </div>
@@ -124,7 +125,7 @@
         <h2 class="text-center text-4xl font-title font-bold mb-10 uppercase">Bracket Oficial</h2>
         <div id="adminControls" class="hidden mb-6 bg-yellow-600/20 p-4 rounded-lg border border-yellow-600 text-center text-sm">
             <span class="font-bold text-yellow-500 uppercase tracking-tighter">Modo Admin Activo</span>
-            <button onclick="logout()" class="ml-4 underline">Cerrar Sesión</button>
+            <button onclick="logout()" class="ml-4 underline text-xs">Cerrar Sesión</button>
         </div>
 
         <div class="flex flex-row justify-center items-center gap-8 overflow-x-auto pb-20">
@@ -140,8 +141,8 @@
             </div>
             <div class="flex flex-col justify-center">
                 <div class="space-y-2">
-                    <div id="f-1" onclick="handleWin('f-1', 'f-2', 'champ')" class="bracket-node glass p-3 rounded border-blue-500 cursor-pointer italic text-gray-500 text-xs">Ganador Semis 1</div>
-                    <div id="f-2" onclick="handleWin('f-2', 'f-1', 'champ')" class="bracket-node glass p-3 rounded border-blue-500 cursor-pointer italic text-gray-500 text-xs">Ganador Semis 2</div>
+                    <div id="f-1" onclick="handleWin('f-1', 'f-2', 'champ')" class="bracket-node glass p-3 rounded border-blue-500 cursor-pointer italic text-gray-500 text-xs uppercase">Semis 1</div>
+                    <div id="f-2" onclick="handleWin('f-2', 'f-1', 'champ')" class="bracket-node glass p-3 rounded border-blue-500 cursor-pointer italic text-gray-500 text-xs uppercase">Semis 2</div>
                 </div>
             </div>
             <div class="text-center ml-8">
@@ -151,24 +152,28 @@
         </div>
 
         <div id="teamAdminList" class="hidden mt-10 max-w-2xl mx-auto">
-            <h3 class="text-xl font-bold mb-4 border-b border-white/20 pb-2 uppercase text-xs text-gray-400">Equipos Registrados</h3>
-            <div id="listContent" class="space-y-2"></div>
+            <h3 class="text-xl font-bold mb-4 border-b border-white/20 pb-2 uppercase text-xs text-gray-400">Equipos Registrados (Nube)</h3>
+            <div id="listContent" class="space-y-2 text-sm"></div>
         </div>
     </div>
 
-    <div id="page-login" class="page hidden min-h-screen flex items-center justify-center">
-        <div class="glass p-8 rounded-xl w-80 text-center">
+    <div id="page-login" class="page hidden min-h-screen flex items-center justify-center text-center">
+        <div class="glass p-8 rounded-xl w-80">
             <h2 class="text-2xl font-bold mb-6 uppercase font-title">Admin Login</h2>
-            <input type="text" id="userAdmin" placeholder="sebastian2026" class="w-full bg-slate-900 p-2 rounded mb-4 outline-none border border-slate-700 text-sm">
-            <input type="password" id="passAdmin" placeholder="admin123" class="w-full bg-slate-900 p-2 rounded mb-6 outline-none border border-slate-700 text-sm">
-            <button onclick="login()" class="w-full bg-blue-600 py-2 rounded font-bold uppercase text-sm">Entrar</button>
+            <input type="text" id="userAdmin" placeholder="sebastian2026" class="w-full bg-slate-900 p-2 rounded mb-4 outline-none border border-slate-700">
+            <input type="password" id="passAdmin" placeholder="admin123" class="w-full bg-slate-900 p-2 rounded mb-6 outline-none border border-slate-700">
+            <button onclick="login()" class="w-full bg-blue-600 py-2 rounded font-bold uppercase">Entrar</button>
         </div>
     </div>
 
     <script>
+        // 1. CONFIGURACIÓN DE SUPABASE
+        const SUPABASE_URL = 'https://vzewsgkozmnlvqamhswo.supabase.co';
+        const SUPABASE_KEY = 'sb_secret_hFn6tVvxpkLciZm5EHwCig_lIuxvQ7k'; 
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
         let isAdmin = false;
-        let playerCount = 1; 
-        let inscritos = JSON.parse(localStorage.getItem('torneoLK_data')) || [];
+        let playerCount = 1;
 
         function showPage(id) {
             document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
@@ -176,24 +181,24 @@
             if(id === 'bracket') renderAdminList();
         }
 
-        // LÓGICA DE AGREGAR JUGADORES (Mín 5, Máx 6 total)
+        // AGREGAR JUGADORES DINÁMICAMENTE
         function addPlayerField() {
             if (playerCount >= 6) return;
             playerCount++;
             const container = document.getElementById('additionalPlayers');
-            const isRequired = playerCount <= 5 ? 'required' : '';
-            const statusLabel = playerCount <= 5 ? '(Obligatorio)' : '(Opcional)';
+            const isReq = playerCount <= 5 ? 'required' : '';
+            const lbl = playerCount <= 5 ? '(Obligatorio)' : '(Opcional)';
 
             const div = document.createElement('div');
             div.className = "grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/5 p-4 rounded-lg border border-white/10";
             div.innerHTML = `
                 <div>
-                    <label class="text-[10px] uppercase text-gray-500 block mb-1">Nickname ${statusLabel}</label>
-                    <input type="text" class="input-field p_nick" placeholder="Nombre del jugador" ${isRequired}>
+                    <label class="text-[10px] uppercase text-gray-500 block mb-1">Nickname ${lbl}</label>
+                    <input type="text" class="input-field p_nick" placeholder="Nombre" ${isReq}>
                 </div>
                 <div>
-                    <label class="text-[10px] uppercase text-gray-500 block mb-1">Game ID ${statusLabel}</label>
-                    <input type="text" class="input-field p_id" placeholder="ID del juego" ${isRequired}>
+                    <label class="text-[10px] uppercase text-gray-500 block mb-1">Game ID ${lbl}</label>
+                    <input type="text" class="input-field p_id" placeholder="ID" ${isReq}>
                 </div>
             `;
             container.appendChild(div);
@@ -205,51 +210,79 @@
             document.getElementById('playerCounter').innerText = `${playerCount} / 6 Jugadores`;
         }
 
-        // Inicializar con los 4 campos obligatorios adicionales para llegar a 5
+        // Inicializamos con 4 campos obligatorios (Capitán + 4 = 5 miembros mínimos)
         for(let i=0; i<4; i++) { addPlayerField(); }
 
-        // LÓGICA DE REGISTRO
-        document.getElementById('formRegistro').onsubmit = (e) => {
+        // REGISTRO EN SUPABASE
+        document.getElementById('formRegistro').onsubmit = async (e) => {
             e.preventDefault();
+            
             const capID = document.getElementById('capID').value.trim();
             const otherIDs = Array.from(document.querySelectorAll('.p_id')).map(i => i.value.trim()).filter(v => v !== "");
             const todosLosIDs = [capID, ...otherIDs];
 
-            // Validar IDs únicos dentro del equipo
-            if (new Set(todosLosIDs).size !== todosLosIDs.length) {
-                alert("❌ No puedes repetir el mismo ID en el equipo."); return;
-            }
+            // Validar IDs únicos contra la nube
+            const { data: existentes } = await supabase.from('inscritos').select('ids_jugadores');
+            const idsGlobales = existentes ? existentes.flatMap(eq => JSON.parse(eq.ids_jugadores)) : [];
 
-            // Validar contra otros equipos
-            const idsGlobales = inscritos.flatMap(e => e.ids);
             const duplicado = todosLosIDs.find(id => idsGlobales.includes(id));
             if (duplicado) {
-                alert(`❌ El ID "${duplicado}" ya está registrado en otro equipo.`); return;
+                alert(`❌ El ID "${duplicado}" ya está registrado en otro equipo.`);
+                return;
             }
 
-            inscritos.push({
-                id: Date.now(),
-                nombre: document.getElementById('teamName').value,
-                cap: document.getElementById('capName').value,
-                ids: todosLosIDs
-            });
-            localStorage.setItem('torneoLK_data', JSON.stringify(inscritos));
-            alert("✅ REGISTRO EXITOSO");
-            location.reload();
+            // Insertar datos
+            const { error } = await supabase.from('inscritos').insert([{
+                nombre_equipo: document.getElementById('teamName').value,
+                capitan: document.getElementById('capName').value,
+                tel_capitan: document.getElementById('capTel').value,
+                ids_jugadores: JSON.stringify(todosLosIDs)
+            }]);
+
+            if (error) {
+                alert("Error de conexión con la nube.");
+            } else {
+                alert("✅ ¡INSCRIPCIÓN EXITOSA!");
+                location.reload();
+            }
         };
 
-        // ADMIN FUNCTIONS
+        // ADMIN Y BRACKETS
         function login() {
-            if(document.getElementById('userAdmin').value === 'sebastian2026' && document.getElementById('passAdmin').value === 'admin123') {
+            const u = document.getElementById('userAdmin').value;
+            const p = document.getElementById('passAdmin').value;
+            if(u === 'sebastian2026' && p === 'admin123') {
                 isAdmin = true;
                 document.getElementById('adminControls').classList.remove('hidden');
                 document.getElementById('teamAdminList').classList.remove('hidden');
                 document.getElementById('adminStatusBtn').innerText = "ADMIN ONLINE";
                 showPage('bracket');
-            } else { alert("Credenciales incorrectas"); }
+            } else { alert("Error"); }
         }
 
-        function logout() { isAdmin = false; location.reload(); }
+        function logout() { location.reload(); }
+
+        async function renderAdminList() {
+            const cont = document.getElementById('listContent');
+            const { data: inscritos } = await supabase.from('inscritos').select('*');
+            if (inscritos) {
+                cont.innerHTML = inscritos.map(eq => `
+                    <div class="flex justify-between items-center bg-slate-800 p-3 rounded border border-slate-700 mb-2">
+                        <div>
+                            <p class="font-bold text-blue-400">${eq.nombre_equipo}</p>
+                            <p class="text-[10px] text-gray-500">Cap: ${eq.capitan} | Tel: ${eq.tel_capitan}</p>
+                        </div>
+                        <button onclick="eliminarEquipo(${eq.id})" class="text-red-500 bg-red-500/10 px-2 rounded">X</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        async function eliminarEquipo(id) {
+            if(!isAdmin) return;
+            await supabase.from('inscritos').delete().eq('id', id);
+            renderAdminList();
+        }
 
         function handleWin(wId, lId, nId) {
             if(!isAdmin) return;
@@ -260,23 +293,6 @@
             loser.classList.add('eliminated'); loser.classList.remove('winner');
             next.innerText = winner.innerText;
             next.classList.remove('italic', 'text-gray-500', 'text-xs');
-        }
-
-        function renderAdminList() {
-            const cont = document.getElementById('listContent');
-            cont.innerHTML = inscritos.map(eq => `
-                <div class="flex justify-between items-center bg-slate-800 p-3 rounded border border-slate-700 text-sm">
-                    <div><span class="font-bold text-blue-400">${eq.nombre}</span> <span class="text-[10px] text-gray-500">(IDs: ${eq.ids.length})</span></div>
-                    <button onclick="eliminarEquipo(${eq.id})" class="text-[10px] bg-red-600/20 text-red-500 px-2 py-1 rounded">X</button>
-                </div>
-            `).join('');
-        }
-
-        function eliminarEquipo(id) {
-            if(!isAdmin) return;
-            inscritos = inscritos.filter(e => e.id !== id);
-            localStorage.setItem('torneoLK_data', JSON.stringify(inscritos));
-            renderAdminList();
         }
     </script>
 </body>
