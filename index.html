@@ -35,9 +35,57 @@
             <button onclick="showPage('bracket')" class="px-8 py-4 glass hover:bg-white/10 rounded-lg font-bold uppercase transition">Ver Equipos</button>
             <button onclick="showPage('bracket')" class="px-8 py-4 glass hover:bg-white/10 rounded-lg font-bold uppercase transition">Ver Ganadores</button>
         </div>
-        <footer class="mt-20 border-t border-white/10 w-full max-w-2xl py-6 flex justify-around text-gray-500 text-sm">
-            <span>TikTok</span> <span>Instagram</span> <span>Facebook</span>
-        </footer>
+        <footer class="mt-20 border-t border-purple-500/30 bg-[#020617] px-10 py-12">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <div class="space-y-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-purple-500 text-2xl">🎮</span>
+                    <h2 class="text-xl font-bold font-title tracking-tighter">
+                        COPA LEAGUE <span class="text-purple-500">LK</span>
+                    </h2>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
+                    El torneo definitivo de Mobile Legends. Demuestra tu habilidad, compite con los mejores y alcanza la gloria en la arena.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-lg font-bold font-title uppercase tracking-widest text-white">Enlaces Rápidos</h3>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="#" onclick="showPage('home')" class="hover:text-purple-500 transition">Home</a></li>
+                    <li><a href="#" onclick="showPage('inscripcion')" class="hover:text-purple-500 transition">Inscripción</a></li>
+                    <li><a href="#" onclick="showPage('bracket')" class="hover:text-purple-500 transition">Resultados</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-lg font-bold font-title uppercase tracking-widest text-white">Síguenos</h3>
+                <div class="flex gap-3">
+                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center border border-gray-700 rounded hover:border-purple-500 hover:text-purple-500 transition text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-widest">
+            <p>© 2026 Copa League LK. Todos los derechos reservados.</p>
+            <div class="space-x-6">
+                <a href="#" class="hover:text-white transition">Términos de Servicio</a>
+                <a href="#" class="hover:text-white transition">Política de Privacidad</a>
+            </div>
+        </div>
+    </footer>
     </div>
 
     <div id="page-inscripcion" class="page hidden min-h-screen p-8 max-w-4xl mx-auto">
